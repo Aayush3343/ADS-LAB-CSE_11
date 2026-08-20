@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+void push(int arr[], int & rear, int n, int & front, int val) {
+    if (rear == n - 1) {
+        cout << "Queue is full" << endl;
+    }
+    else if (front == -1 && rear == -1)
+    {
+        front = 0;
+        rear = 0;
+        arr[rear] = val;
+    }
+    else
+    {
+        rear++;
+        arr[rear] = val;
+    }
+}
+void pop(int arr[], int & front, int rear) {
+    if (front > rear) {
+        cout << "Queue is Empty" << endl;
+    }
+    else
+    {
+        cout << front <<  endl << rear << endl;
+        int x = arr[front];
+        cout << "Element poped is : " << x << endl;
+        front++;
+    }
+}
+void peek(int arr[], int & front, int rear) {
+    if (front > rear) {
+        cout << "Queue is empty" << endl;
+    }
+    else
+    {
+        cout << arr[front] << endl;
+    }
+}
+void display(int arr[], int front, int rear) {
+    for (int i = front; i <= rear; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    int front = -1;
+    int rear = -1;
+    int queue[n];
+    push(queue, rear, n, front, 10);
+    push(queue, rear, n, front, 20);
+    push(queue, rear, n, front, 30);
+    push(queue, rear, n, front, 40);
+    pop(queue, front, rear);
+    peek(queue, front, rear);
+    display(queue, front, rear);
+    pop(queue, front, rear);
+    display(queue, front, rear);
+    push(queue, rear, n, front, 50);
+    display(queue, front, rear);
+
+}
